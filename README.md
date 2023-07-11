@@ -16,7 +16,14 @@ kubectl get pods -n falco -o wide -w
 
 ![Screenshot 2023-07-11 at 13 21 57](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/33ea3e03-f041-4c48-9055-17f5256612c2)
 
-Get the logs from the pod falco-rq4gs
+You can use the ```kubectl get pods``` command along with some additional filters and the ```--output=jsonpath``` option to retrieve the pod name dynamically and then pass it to the ```kubectl logs``` command.
 ```
-kubectl logs falco-rq4gs -n falco
+POD_NAME=$(kubectl get pods -n falco --field-selector=status.phase=Running -o=jsonpath='{.items[0].metadata.name}')
+kubectl logs $POD_NAME -n falco
 ```
+
+This command fetches the name of the first running pod in the ```falco``` namespace and assigns it to the ```POD_NAME``` variable. <br/>
+Then, it uses the retrieved pod name to fetch the logs of that pod using ```kubectl logs```.
+
+![Screenshot 2023-07-11 at 13 25 30](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/b64d4c0c-dfbf-4664-8096-121965724dd1)
+
