@@ -27,6 +27,14 @@ Then, it uses the retrieved pod name to fetch the logs of that pod using ```kube
 
 ![Screenshot 2023-07-11 at 13 25 30](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/b64d4c0c-dfbf-4664-8096-121965724dd1)
 
+alternatively, you can run:
+```
+kubectl logs -n falco -l app.kubernetes.io/instance=falco
+```
+
+![Screenshot 2023-07-11 at 13 49 16](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/72aa9201-8f94-4ecb-a801-5030c36148a4)
+
+
 ## Install Tetragon
 ```
 helm repo add cilium https://helm.cilium.io
