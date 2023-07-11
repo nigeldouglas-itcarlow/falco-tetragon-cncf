@@ -45,4 +45,19 @@ kubectl rollout status -n kube-system ds/tetragon -w
 
 ![Screenshot 2023-07-11 at 13 31 01](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/72c61a0c-a3d6-45d5-9ace-1b19929666bc)
 
+## Cryptomining Binary Detection
+```
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
+```
 
+```
+cat custom-rules.yaml
+```
+
+```
+helm install falco -f custom-rules.yaml falcosecurity/falco
+```
+And we will see in our logs something like:
+```
+Mon Jan 30 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
+```
