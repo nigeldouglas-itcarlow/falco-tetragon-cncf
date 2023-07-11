@@ -27,3 +27,14 @@ Then, it uses the retrieved pod name to fetch the logs of that pod using ```kube
 
 ![Screenshot 2023-07-11 at 13 25 30](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/b64d4c0c-dfbf-4664-8096-121965724dd1)
 
+## Install Tetragon
+```
+helm repo add cilium https://helm.cilium.io
+helm repo update
+helm install tetragon cilium/tetragon -n kube-system
+kubectl rollout status -n kube-system ds/tetragon -w
+```
+
+![Screenshot 2023-07-11 at 13 31 01](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/72c61a0c-a3d6-45d5-9ace-1b19929666bc)
+
+
