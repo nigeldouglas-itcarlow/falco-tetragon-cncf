@@ -45,6 +45,28 @@ kubectl rollout status -n kube-system ds/tetragon -w
 
 ![Screenshot 2023-07-11 at 13 31 01](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/72c61a0c-a3d6-45d5-9ace-1b19929666bc)
 
+## Terminal Shell in Container
+
+Create a workload with ```privileged=true``` on ```Terminal 1```:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/privileged-pod.yaml
+```
+
+Open an activity tail for Tetragon (```Terminal 2```):
+```
+kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod test-pod-1
+```
+
+Open an event output for Falco (```Terminal 3```):
+```
+kubectl logs -n falco -l app.kubernetes.io/instance=falco -w
+```
+
+Shell into the workload on ```Terminal 1```:
+```
+kubectl exec -it nigel-app -- bash
+```
+
 ## Cryptomining Binary Detection
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
