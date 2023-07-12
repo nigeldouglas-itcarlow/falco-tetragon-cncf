@@ -73,7 +73,50 @@ kubectl exec -it nigel-app -- bash
 ![Screenshot 2023-07-12 at 14 45 23](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/941357c0-704c-4e25-b5b1-c09544fc8116)
 
 
+## Detect Suspicious Network Activity
+
+Download a Cryptomining Binary package 'XMRIG' on the newly-created workload:
+```
+curl -OL https://github.com/xmrig/xmrig/releases/download/v6.16.4/xmrig-6.16.4-linux-static-x64.tar.gz
+```
+
+Unzip the package you just downloaded:
+```
+tar -xvf xmrig-6.16.4-linux-static-x64.tar.gz
+```
+
+Move to the folder that holds the binary
+```
+cd xmrig-6.16.4
+```
+
+Run the binary. <br/>
+We want to monitor and prevent traffic to ```14433```
+```
+./xmrig --donate-level 8 -o xmr-us-east1.nanopool.org:14433 -u 422skia35WvF9mVq9Z9oCMRtoEunYQ5kHPvRqpH1rGCv1BzD5dUY4cD8wiCMp4KQEYLAN1BuawbUEJE99SNrTv9N9gf2TWC --tls --coin monero
+```
+
+### Monitor the Network traffic using Tetragon
+
+Create a ```TracingPolicy``` in Tetragon
+```
+kubectl apply -f https://raw.githubusercontent.com/cilium/tetragon/main/examples/tracingpolicy/tcp-connect.yaml
+```
+
+Check the output:
+```
+kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout -f | tetra getevents -o compact --namespace default --pod test-pod-1
+```
+
+### Monitor the suspicious network activity using Falco
+
+Try generating traffic that uses the ```stratum``` protocol 
+```
+./xmrig -o stratum+tcp://xmr.pool.minergate.com:45700 -u lies@lies.lies -p x -t 2
+```
+
 ## Cryptomining Binary Detection
+
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
 ```
