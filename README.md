@@ -115,7 +115,10 @@ Try generating traffic that uses the ```stratum``` protocol
 ./xmrig -o stratum+tcp://xmr.pool.minergate.com:45700 -u lies@lies.lies -p x -t 2
 ```
 
-## Cryptomining Binary Detection
+![Screenshot 2023-07-12 at 15 12 08](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/54019c2f-2bbc-426f-9ff6-35c53110a15b)
+
+
+## Kill Malicious Binaries upon Detection
 
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
