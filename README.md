@@ -131,6 +131,10 @@ cat custom-rules.yaml
 ```
 helm upgrade falco -n falco -f custom-rules.yaml falcosecurity/falco
 ```
+Confirm the changes have been applied to the ```ConfigMap``` of Falco
+```
+kubectl edit cm falco-rules -n falco 
+```
 And we will see in our logs something like:
 ```
 Mon Jan 30 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
