@@ -67,6 +67,11 @@ Shell into the workload on ```Terminal 1```:
 kubectl exec -it nigel-app -- bash
 ```
 
+```Tetragon``` in this case is providing a ```Live Tail``` of all process-related activity in real-time. <br/>
+```Falco``` is providing triggering ```Realtime Alerts``` based on the same system call activity observed by Tetragon:
+![Screenshot 2023-07-12 at 14 45 23](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/101bcb7f-dcf6-47a6-a848-fc08faef6253)
+
+
 ## Cryptomining Binary Detection
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
