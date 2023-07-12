@@ -133,7 +133,8 @@ Once you've downloaded the custom-rules file, just open it to confirm its format
 cat custom-rules.yaml
 ```
 
-![Screenshot 2023-07-12 at 21 47 50](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/5dfb5b83-5b36-42f3-87e5-73c7928b5693)
+
+![Screenshot 2023-07-12 at 21 47 50](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/26533ba8-374e-4d84-9f90-517caf9fd38a)
 
 
 You can apply the newly-configured rules on-the-fly via Helm:
