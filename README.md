@@ -128,6 +128,10 @@ Once you've downloaded the custom-rules file, just open it to confirm its format
 ```
 cat custom-rules.yaml
 ```
+
+![Screenshot 2023-07-12 at 21 47 50](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/5dfb5b83-5b36-42f3-87e5-73c7928b5693)
+
+
 You can apply the newly-configured rules on-the-fly via Helm:
 ```
 helm upgrade falco -n falco -f custom-rules.yaml falcosecurity/falco
@@ -149,3 +153,6 @@ Now we apply a Tetragon ```TracingPolicy``` that will perform ```sigkill``` acti
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPolicies/multi-binary-sigkill.yaml
 ```
+
+![Screenshot 2023-07-12 at 21 44 22](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/9d05e1ea-ad3a-49ee-ac08-401dc34ba62a)
+
