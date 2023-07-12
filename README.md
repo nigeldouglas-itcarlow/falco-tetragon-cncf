@@ -147,5 +147,5 @@ Here's the output of the connection from privileged pod to the mining pool:
 
 Now we apply a Tetragon ```TracingPolicy``` that will perform ```sigkill``` action when the script is run:
 ```
-Kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPolicies/multi-binary-sigkill.yaml
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPolicies/multi-binary-sigkill.yaml
 ```
