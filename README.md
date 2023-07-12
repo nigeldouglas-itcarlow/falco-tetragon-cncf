@@ -129,7 +129,7 @@ cat custom-rules.yaml
 ```
 
 ```
-helm install falco -f custom-rules.yaml falcosecurity/falco
+helm upgrade falco -n falco -f custom-rules.yaml falcosecurity/falco
 ```
 And we will see in our logs something like:
 ```
