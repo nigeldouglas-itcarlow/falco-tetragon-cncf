@@ -120,14 +120,15 @@ Try generating traffic that uses the ```stratum``` protocol
 
 ## Kill Malicious Binaries upon Detection
 
+I built some bespoke Falco rules for the purposes of in-depth cryptomining detection
 ```
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/config/custom-rules.yaml
 ```
-
+Once you've downloaded the custom-rules file, just open it to confirm its formatted correctly
 ```
 cat custom-rules.yaml
 ```
-
+You can apply the newly-configured rules on-the-fly via Helm:
 ```
 helm upgrade falco -n falco -f custom-rules.yaml falcosecurity/falco
 ```
@@ -138,4 +139,13 @@ kubectl edit cm falco-rules -n falco
 And we will see in our logs something like:
 ```
 Mon Jan 30 10:56:26 2023: Loading rules from file /etc/falco/rules.d/rules-mining.yaml:
+```
+
+Here's the output of the connection from privileged pod to the mining pool:
+
+![Screenshot 2023-07-12 at 21 30 56](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/f41af4cb-7d1c-4c3d-a523-b90471b6dd68)
+
+Now we apply a Tetragon ```TracingPolicy``` that will perform ```sigkill``` action when the script is run:
+```
+Kubectl apply - https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetragon-Lab/main/TracingPolicies/multi-binary-sigkill.yaml
 ```
