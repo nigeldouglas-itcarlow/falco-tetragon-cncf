@@ -1,5 +1,9 @@
-# falco-tetragon-cncf
-Running Falco &amp; Tetragon together to achieve cloud-native detection &amp; response (CDR)
+# Designing a Cloud-Native IDPS with Falco and Tetragon
+
+The consolidation of the open-source Falco and Tetragon eBPF runtime inspection tools is crucial to achieving a cloud-native Intrusion Detection and Prevention System (IDPS) for containers and Kubernetes. While Falco alone serves as a powerful rules engine capable of detecting Indicators of Compromise (IoCs) and alerting when complex patterns are matched, it lacks the ability to prevent malicious processes or behaviors from occurring. This limitation positions Falco solely as the IDS component of an IDPS. On the other hand, Tetragon, operating as a live tail, offers real-time filtering of host and container network, files, and process activity. Unlike Falco, Tetragon can take action by terminating processes using Sigkill actions and more. By combining these two tools, leveraging their respective strengths, and utilizing eBPF as the underlying technology, this thesis study aims to detect and prevent cloud-native threats inline with the Tactics, Techniques, and Procedures (TTPs) outlined in the MITRE ATT&CK framework. This consolidation will provide a comprehensive and robust cloud-native IDPS solution.
+
+
+## Create a one-node cluster in EKS
 
 ```
 eksctl create cluster nigel-eks-cluster --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
