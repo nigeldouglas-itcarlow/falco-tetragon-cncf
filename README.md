@@ -59,7 +59,7 @@ kubectl logs -n kube-system -l app.kubernetes.io/name=tetragon -c export-stdout 
 
 Open an event output for Falco (```Terminal 3```):
 ```
-kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco -w
+kubectl logs --follow -n falco -l app.kubernetes.io/instance=falco | grep k8s.pod=nigel-app
 ```
 
 Shell into the workload on ```Terminal 1```:
