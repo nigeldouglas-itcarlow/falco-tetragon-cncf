@@ -161,3 +161,10 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetrago
 
 ![Screenshot 2023-07-12 at 21 44 22](https://github.com/nigeldouglas-itcarlow/falco-tetragon-cncf/assets/126002808/9d05e1ea-ad3a-49ee-ac08-401dc34ba62a)
 
+## Detect Sigkill Actions using Falco
+```
+wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/falco-rules/sigkill.yaml
+```
+```
+helm upgrade falco -n falco -f sigkill.yaml falcosecurity/falco
+```
