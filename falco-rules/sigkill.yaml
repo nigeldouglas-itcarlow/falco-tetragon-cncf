@@ -1,0 +1,8 @@
+customRules:
+  sigkill-rule.yaml: |-
+    - rule: Detect SIGKILL Actions
+      desc: Detects when a process receives a SIGKILL signal
+      condition: evt.type = execve and evt.arg[0] = kill and evt.arg[1] = -9
+      output: |
+        Process with PID = %proc.pid has been killed with SIGKILL by UID = %user.uid
+      priority: WARNING
