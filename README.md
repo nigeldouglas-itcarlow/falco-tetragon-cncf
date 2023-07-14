@@ -14,7 +14,7 @@ eksctl create cluster nigel-eks-cluster --node-type t3.xlarge --nodes=1 --nodes-
 ```
 helm repo add falcosecurity https://falcosecurity.github.io/charts
 helm repo update
-helm install falco falcosecurity/falco --namespace falco --create-namespace
+helm install falco falcosecurity/falco --namespace falco --set tty=true --create-namespace
 kubectl get pods -n falco -o wide -w
 ```
 
@@ -166,7 +166,7 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/Tetrago
 wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf/main/falco-rules/sigkill.yaml
 ```
 ```
-helm upgrade falco -n falco -f sigkill.yaml falcosecurity/falco
+helm upgrade falco -n falco -f sigkill.yaml falcosecurity/falco --set tty=true
 ```
 Get the latest test output
 ```
