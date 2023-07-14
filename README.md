@@ -168,3 +168,7 @@ wget https://raw.githubusercontent.com/nigeldouglas-itcarlow/falco-tetragon-cncf
 ```
 helm upgrade falco -n falco -f sigkill.yaml falcosecurity/falco
 ```
+Get the latest test output
+```
+kubectl logs --since=1m -f <pod-name> -n falco
+```
